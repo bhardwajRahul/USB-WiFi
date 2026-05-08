@@ -1,11 +1,15 @@
 # The Plug and Play List
 
+Maintained by: @morrownr
+Updated on: 05-08-2026
+
 ## USB WiFi adapters that are supported with Linux `in-kernel` drivers
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Tri Band adapters](#tri-band-usb-wifi-adapters-that-are-supported-with-linux-in-kernel-drivers)
    * [BE6500 - USB3.0 - 2.4 GHz, 5 GHz and 6 GHz (WiFi 7)](#be6500---usb30---24-ghz-5-ghz-and-6-ghz-wifi-7)
+   * [BE5000 - USB3.0 - 2.4 GHz, 5 GHz and 6 GHz (WiFi 7)](#be50---usb30---24-ghz-5-ghz-and-6-ghz-wifi-7)
    * [AXE3000 - USB3.0 - 2.4 GHz, 5 GHz and 6 GHz (WiFi 6E)](#axe3000---usb30---24-ghz-5-ghz-and-6-ghz-wifi-6e)
 3. [Dual Band adapters](#dual-band-usb-wifi-adapters-that-are-supported-with-linux-in-kernel-drivers)
    * [AX1800 - USB 3 - 2.4 GHz and 5 GHz (WiFi 6)](#ax1800---usb-3---24-ghz-and-5-ghz-wifi-6)
@@ -38,6 +42,7 @@ Note: This site strives for continuous improvement. You can be a part of making 
 
 ### Recent changes:
 
+- 2026-05-08 - added Netgear A8500 to the be5000 section - WiFi 7, BE5000.
 - 2025-11-01 - added Brostrend AX9L to the axe3000 section - WiFi 6, AXE3000.
 - 2025-09-18 - added Netgear A7500 to the ax1800 section - WiFi 6, AX1800.
 - 2025-09-08 - added Netgear A9000 to the be6500 section - WiFi 7, BE6500.
@@ -212,6 +217,88 @@ Command line: time sudo hcxdumptool --exitoneapol=14
 Monitor mode support appears to be as good as it gets.
 
 My overall opinion is that this adapter is a very good adapter for many uses with Linux. It is a high priced adapter and hopefully that price will come down with time. Most Linux users running modern Linux distros such as Debian 13+ or Ubuntu 25.04+ (recommend kernel 6.12 or later) should find this adapter to be a problem free experience.
+
+-----
+
+### BE5000 - USB3.0 - 2.4 GHz, 5 GHz and 6 GHz (WiFi 7)
+
+-----
+
+#### `chipset - Mediatek mt7925 - supported in-kernel since Linux kernel 6.7 (2024)` - WiFi 7 chip that supports 160 MHz Channel width
+
+-----
+
+```
+>================================<
+>======>  Netgear A8500 <========<
+>================================<
+```
+
+<img width="1200" height="1200" alt="image" src="https://github.com/user-attachments/assets/69458506-c547-4579-b874-f449893b3624" />
+
+```
+Note: Single-state, no windows driver onboard, wifi only adapter.
+Note: The Windows driver is supplied on a small flash drive.
+Note: This adapter uses the mt7925u chipset.
+Note: This adapter does not use the standard Mediatek device ID (VID/PID). See below.
+Note: Oldest kernel that supports this adapter: 7.2
+Note: Oldest LTS kernel that supports this adapter: not yet
+Note: Recommended kernel: 7.2 or later
+Note: Supported interface modes with kernel where support started:
+		* managed		(6.7+)
+		* AP			(6.7+)
+		* AP/VLAN		(6.7+)
+		* monitor		(6.7+)
+		* P2P-client	(6.7+)
+		* P2P-GO		(6.7+)
+
+Note: Device supports active monitor (which will ACK incoming frames)
+```
+
+Netgear - 80 USB - [Netgear A8500 - BE5000 class USB WiFi adapter](https://www.netgear.com/home/wifi/adapters/a8500/)
+
+Amazon - 90 USD - [Netgear A8500 - BE5000 class USB WiFi adapter](https://www.amazon.com/NETGEAR-Nighthawk-WiFi-Adapter-A8500/dp/B0FRNFR6H1)
+
+Important: The Netgear A8500 uses a device ID (VID/PID) that is scheduled to go into Linux kernel 7.2. If you are using kernel 6.7 or later and this adapter is not plug and play, there is a way to tell your Linux system about the device ID (VID/PID):
+
+Hotplug automation using udev
+
+Open a terminal: Ctrl + Alt + T
+
+Create a file:
+
+```
+sudo nano /etc/udev/rules.d/90-usb-0846:9050-mt7925u.rules
+```
+
+Note: you can change nano to the text editor of your choice in the above command.
+
+Copy the below lines and paste them into the above file that you are creating:
+
+```
+ACTION=="add", \
+	SUBSYSTEM=="usb", \
+	ENV{ID_VENDOR_ID}=="0846", \
+	ENV{ID_MODEL_ID}=="9050", \
+	RUN+="/usr/sbin/modprobe mt7925u", \
+	RUN+="/bin/sh -c 'echo 0846 9050 > /sys/bus/usb/drivers/mt7925u/new_id'"
+ ```
+
+Save file: Ctrl + O, Ctrl + X
+
+Reboot:
+
+```
+sudo reboot
+```
+
+To remove the file created above: (if it is no longer necessary or did not work)
+
+```
+sudo rm /etc/udev/rules.d/90-usb-0846:9050-mt7925u.rules
+```
+
+Review needed.
 
 -----
 
