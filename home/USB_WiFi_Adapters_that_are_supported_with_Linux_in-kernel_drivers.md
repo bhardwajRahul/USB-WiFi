@@ -52,19 +52,17 @@ Note: This site strives for continuous improvement. You can be a part of making 
 - 2025-06-05 - added ALFA AWUS036ACH to the ac1200 section - WiFi 5, AC1200. 
 - 2025-05-12 - added ALFA AWUS036ACS to the ac600 section - WiFi 5, AC600.
 - 2025-01-08 - added TP-Link TXE50UH to the axe3000 section - WiFi 6, AXE3000.
-- 2024-11-10 - removed the Alfa AXML and AXM adapters due to an ongoing issue. Edit: 2025-06-05 - tests with Ubuntu 25.04, which uses kernel 6.14, show AXML operating normally again after recent patches have made it into mainline. Once additional testing is completed with additional distros, the AXML may be returned to this list. If you have an AXML adapter, please test and post your results to `Issues`.
+- 2024-11-10 - removed the Alfa AXML
 - 2024-07-18 - added Panda PAU0F to the axe3000 section - WiFi 6, AXE3000.
 - 2024-07-10 - added Fenvi FU-AX1801D to the ax1800 section - WiFi 6, AX1800.
 - 2024-03-24 - added EDUP EP-AX1672 to the axe3000 section - WiFi 6, AXE3000. 
 - 2024-03-24 - added PIX-LINK LV-UAC04 to ac1200 section - WiFi 5, AC1200.
-- 2024-01-13 - added generic rtl8812bu adapter to the ac1200 section - WiFi 5, AC1200.
 - 2023-09-21 - added Fenvi FU-AX1800 to the ax1800 section - WiFi 6, AX1800. 
-- 2023-05-18 - added ALLNET ALL-WA1200AC to the ac1200 section - WiFi 5, AC1200.
-- 2023-04-10 - added BrosTrend AC3L to the ac1200 section - WiFi 5, AC1200.
 - 2023-02-15 - added Panda PAU0B to the ac600 section - WiFi 5, AC600.
 - 2023-02-01 - added ALFA AWUS036AXML to the axe3000 section - WiFi 6, AXE3000.
 - 2023-02-01 - added Netgear A8000 to axe3000 section - WiFi 6, AXE3000.
 
+Note: There are still adapters based on older chips and drivers that are plug and play and are still available.
 
 ### Market & pricing
 
@@ -85,8 +83,6 @@ Market Conditions: 2026-02-17 - Many good adapters are available. Price stabilit
 
 #### `chipset - Mediatek mt7925 - supported in-kernel since Linux kernel 6.7 (2024)` - WiFi 7 chip that supports 160 MHz Channel width
 
-Warning: There is also a mt7927 chipset that is very similar to the mt7925. It is also available on cards for internal installation. However, support for the mt7927 has not gone into the Linux kernel yet. The mt7927 supports a channel width of 320 MHz but otherwise appears to be the same as the mt7925 chipset. A separate entry for the mt7927 will be made above once support is in the Linux kernel.
-
 -----
 
 ```
@@ -103,7 +99,7 @@ Note: The Windows driver is supplied on a small flash drive.
 Note: This adapter uses the mt7925u chipset.
 Note: This adapter does not use the standard Mediatek device ID (VID/PID). See below.
 Note: Oldest kernel that supports this adapter: 6.7
-Note: Oldest LTS kernel that supports this adapter: kernel 6.12
+Note: Oldest LTS kernel that supports this adapter: 6.12
 Note: Recommended kernel: 6.12 or later
 Note: Supported interface modes with kernel where support started:
 		* managed		(6.7+)
@@ -243,9 +239,9 @@ Note: Single-state, no windows driver onboard, wifi only adapter.
 Note: The Windows driver is supplied on a small flash drive.
 Note: This adapter uses the mt7925u chipset.
 Note: This adapter does not use the standard Mediatek device ID (VID/PID). See below.
-Note: Oldest kernel that supports this adapter: 7.2
-Note: Oldest LTS kernel that supports this adapter: not yet
-Note: Recommended kernel: 7.2 or later
+Note: Oldest kernel that supports this adapter: 6.7
+Note: Oldest LTS kernel that supports this adapter: 6.12
+Note: Recommended kernel: 6.12 or later
 Note: Supported interface modes with kernel where support started:
 		* managed		(6.7+)
 		* AP			(6.7+)
@@ -299,8 +295,6 @@ To remove the file created above: (if it is no longer necessary or did not work)
 ```
 sudo rm /etc/udev/rules.d/90-usb-0846:9050-mt7925u.rules
 ```
-
-Review needed.
 
 -----
 
