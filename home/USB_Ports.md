@@ -1,12 +1,15 @@
 
 ## USB Ports can be a source of problems with USB WiFi adapters
 
+Maintained by: @morrownr
+Last update: 2026-05-10
+
 I've been helping users of USB WiFi adapters for some years now and I
 have noticed that problems are generally first blamed on the driver in
 use. I get that. However, our USB WiFi adapters depend on support from
 multiple stacks (USB and WiFi). There is also the issue of hardware
 compatibility which may require that you change one or more BIOS / UEFI
-settings.
+settings. Sometimes updating the BIOS can help.
 
 Below is an example of using an older USB WiFi adapter on a new system.
 The post is from a Debian forum:
@@ -18,11 +21,8 @@ changing BIOS / UEFI settings and switching to a different port.
 
 #### USB related problems that I have noticed over the last few years
 
-- USB 3.2 gen 2 ports can be problematic, especially with older
-adapters such as the one in the forum post above. The mt7612u is a
-favorite chip among Linux users but it was initially released over
-10 years ago and could not be tested with modern USB 3.2 gen 2 ports
-because they did not exist at the time.
+- USB 3.2 gen 2 ports on AMD CPU based systems can be problematic but
+the problem is not specific to Linux.
 
 - USB ports wear over time and various things can happen if contacts are
 not solid.
@@ -32,17 +32,19 @@ problem.
 
 - There are problematic USB 3 hub chips and problematic USB drivers.
 
-- There are USB BIOS / UEFI settings that can cause problems.
-
 - When in doubt, if you have a USB 2 port, give it a try. USB 2 is
 simply more stable than USB 3 and in most cases, it is fast enough for
-the use case.
+many use cases.
 
 - Powered USB hubs and extension cables can be problematic. Plug the
 adapter directly into a port to test if this could be a problem.
 
 - Some USB subsystems do not provide spec power leaving you in a low
-power condition. I am looking at you RasPi.
+power condition. I am looking at you RasPi. This low power issue
+is more common with Realtek based USB adapters as Mediatek based
+adapters tend to use less power.
+
+- There are USB BIOS / UEFI settings that can cause problems.
 
 ### Specific BIOS / UEFI settings for USB WiFi adapters
 
@@ -147,6 +149,22 @@ BIOS access key (usually Del or F2) upon power-up.
 Recommended setting: disabled
 
 Fast Boot is a setting that skips some hardware checks and initialization processes to make your system boot more quickly. It can disable USB devices during startup, so your keyboard or mouse might not work until the operating system loads completely and some devices may not be initialized at all.
+
+-----
+
+- PCIe 4.0
+
+Recommended setting: disabled
+
+I am still researching this BIOS setting but it seems to help some users.
+
+-----
+
+- USB Gen 3.2
+
+Recommended setting: Gen 3 or Gen 3.1
+
+This recommendation is solid if the setting is available.
 
 -----
 
