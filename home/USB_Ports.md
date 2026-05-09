@@ -2,7 +2,8 @@
 ## USB Ports can be a source of problems with USB WiFi adapters
 
 Maintained by: @morrownr
-Last update: 2026-05-10
+
+Updated on: 2026-05-10
 
 I've been helping users of USB WiFi adapters for some years now and I
 have noticed that problems are generally first blamed on the driver in
