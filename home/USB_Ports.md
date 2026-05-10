@@ -26,7 +26,7 @@ changing BIOS / UEFI settings and switching to a different port.
 the problem is not specific to Linux.
 
 - USB ports wear over time and various things can happen if contacts are
-not solid.
+not solid and clean.
 
 - It is always a good idea to try a different USB port if you have a
 problem.
