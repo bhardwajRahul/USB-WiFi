@@ -50,7 +50,8 @@ adapters tend to use less power.
 
 Note: When troubleshooting, it is a best practice to only change one
 setting at a time and then test. If the test does not provide the
-desired result, return the setting to its previous state.
+desired result, return the setting to its previous state. Also, be
+aware that BIOS's may not contain all of the settings shown below.
 
 -----
 
@@ -152,19 +153,18 @@ Fast Boot is a setting that skips some hardware checks and initialization proces
 
 -----
 
-- PCIe 4.0
+-  PCI Express Configuration 
 
-Recommended setting: disabled
-
-I am still researching this BIOS setting but it seems to help some users.
+Recommended setting: This can depend on your hardware and BIOS. The
+setting to try is to lower the PCIe version. For exaple: If your
+system is set to PCIe 4.0, try PCIe 3.0
 
 -----
 
-- USB Gen 3.2
+- USB Configuration
 
-Recommended setting: Gen 3 or Gen 3.1
-
-This recommendation is solid if the setting is available.
+Recommended setting: If you are having problems and your USB ports are
+set to USB Gen 3.2, you might want to try a setting of USB 3 or USB 3.1
 
 -----
 
