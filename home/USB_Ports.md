@@ -32,7 +32,8 @@ motherboards (i.e., X570 and B550) and consist of random dropouts for
 USB-connected devices.
 
 New systems and motherboards with the problematic AMD chipsets are still
-being sold as of 2026-06 so beware.
+being sold as of 2026-06 so beware. Recommend installing updated BIOS,
+if available.
 
 - USB ports wear over time and various things can happen if contacts are
 not solid and clean.
