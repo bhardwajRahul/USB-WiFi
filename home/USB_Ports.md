@@ -3,7 +3,7 @@
 
 Maintained by: @morrownr
 
-Updated on: 2026-05-10
+Updated on: 2026-05-11
 
 I've been helping users of USB WiFi adapters for some years now and I
 have noticed that problems are generally first blamed on the driver in
@@ -22,8 +22,17 @@ changing BIOS / UEFI settings and switching to a different port.
 
 #### USB related problems that I have noticed over the last few years
 
-- USB 3.2 gen 2 ports on AMD CPU based systems can be problematic but
-the problem is not specific to Linux.
+- USB 3.x ports on AMD CPU based systems can be problematic but
+the problem is not specific to Linux. Here is an article for more details:
+
+https://www.tomshardware.com/news/amd-investigating-usb-connectivity-issues-with-ryzen-pcs
+
+The issues seem confined to Ryzen 3000 and 5000 series CPUs in 500-series
+motherboards (i.e., X570 and B550) and consist of random dropouts for
+USB-connected devices.
+
+New systems and motherboards with the problematic AMD chipsets are still
+being sold as of 2026-06 so beware.
 
 - USB ports wear over time and various things can happen if contacts are
 not solid and clean.
