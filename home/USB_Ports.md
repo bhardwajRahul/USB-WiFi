@@ -34,10 +34,9 @@ problem.
 - There are problematic USB 3 hub chips and problematic USB drivers.
 
 - When in doubt, if you have a USB 2 port, give it a try. USB 2 is
-simply more stable than USB 3 and in most cases, it is fast enough for
-many use cases.
+simply more stable than USB 3 and in many use cases, it is fast enough.
 
-- Powered USB hubs and extension cables can be problematic. Plug the
+ - Powered USB hubs and extension cables can be problematic. Plug the
 adapter directly into a port to test if this could be a problem.
 
 - Some USB subsystems do not provide spec power leaving you in a low
