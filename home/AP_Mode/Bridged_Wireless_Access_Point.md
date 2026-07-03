@@ -2,7 +2,7 @@
 
 Maintained by @morrownr
 
-Forword: This guide has been available for several years and has evolved over that time. This curent edition reflects my ongoing use and testing. My goal is to provide a guide that supports a stable, fast AP setup and an educational experience. This guide is used with and is mostly tested on Raspberry Pi OS (RasPiOS). RasPiOS, as of this writing, uses kernel 6.12 and is based on Debian 13. This guide should work with many Debian based distros on a variety of hardware, possibly with modifications in some cases. I strongly recommend that before you use this guide that you start with a clean distro installation. While this guide primarily uses the RasPiOS, other distros such as, but not limited to, Debian 12/13, Arch, Fedora or Ubuntu should work well. Your comments, suggestions and questions are always welcome ( post in `Issues`).
+Forword: This guide has been available for several years and has evolved over that time. This curent edition reflects my ongoing use and testing. My goal is to provide a guide that supports a stable, fast AP setup and an educational experience. This guide is used with and is mostly tested on Raspberry Pi OS (RasPiOS). RasPiOS, as of this writing, uses kernel 6.18 and is based on Debian 13. This guide should work with many distros on a variety of hardware, possibly with modifications in some cases. I strongly recommend that before you use this guide that you start with a clean distro installation. While this guide primarily uses the RasPiOS, other distros such as, but not limited to, Debian 12/13, Arch, Fedora or Ubuntu should work well. Your comments, suggestions and questions are always welcome ( post in `Issues`).
 
 ## How to build a bridged wireless access point
 
@@ -32,13 +32,13 @@ Note: If you are looking to set up a Routed Wireless Access Point, my recommenda
 
 https://www.youtube.com/watch?v=_pBf2hGqXL8
 
-Information that is helpful with OpenWRT if you intend to use a USB WiFi adapter: OpenWRT has driver packages for several Mediatek/Ralink chipsets to include the mt7925u, mt7925e, mt7921u, mt7921e, mt7612u and mt7610u. These drivers work well but do not support DFS channels for AP mode on the 5 GHz band. Realtek out-of-kernel drivers are a real challenge on OpenWRT and are best avoided. As of kernel 6.14, in-kernel drivers for the rtl8812au and rtl8821/11au chips have been added. As of kernel 6.16, an in-kernel driver for the rtl8814au chip has been added. Additionally, many other Realtek WiFi 5 drivers have been improved to the point in rtw88 that performance is good. Hopefully this Realtek rtw88 WiFi 5 support can be added to OpenWRT at some point but until that happens, you should probably use adapters with Mediatek chipsets. Additionally, at this time, I recommend that you avoid Realtek WiFi 6 and 7 USB adapters as almost none of them can be found in single-state (no windows driver onboard ) configurations and that can be a problem that we do not need.
+Information that is helpful with OpenWRT if you intend to use a USB WiFi adapter: OpenWRT has driver packages for several Mediatek/Ralink chipsets to include the mt7925u, mt7925e, mt7921u, mt7921e, mt7612u and mt7610u. These drivers work well but do not support DFS channels for AP mode on the 5 GHz band. As far as I know, there are no USB WiFi adapters that support DFS channels as doing so would increase the complexity and price of the adapters to the point that makers likely feel that they would not be profitable. Realtek out-of-kernel drivers are a real challenge on OpenWRT and are best avoided. As of kernel 6.14, in-kernel drivers for the rtl8812au and rtl8821/11au chips have been added to the Linux kernel. As of kernel 6.16, an in-kernel driver for the rtl8814au chip has been added to the Linux kerenl. Additionally, many other Realtek WiFi 5in-kernel drivers have been improved to the point in rtw88 that performance is very good. Hopefully this Realtek rtw88 WiFi 5 support can be added to OpenWRT when the version of OpenWRT that uses kernel 6.18 is produced. Until that comes to pass, you should probably use adapters with Mediatek chipsets. Additionally, at this time, I recommend that you avoid Realtek WiFi 6 and 7 USB adapters as almost none of them can be found in single-state (no windows driver onboard ) configurations and that can be a problem that we do not need.
 
 #### Single Band or Dual Band - Your Choice
 
 This document outlines single band and dual band WiFi setups using a Raspberry Pi 4B. There is a lot of flexibility and capability available with this type of setup.
 
-Important: USB WiFi adapters contain only one internal radio. For a dual band setup, you need two usb wifi adapters or one usb wifi adapter and the RasPi internal wifi active. I do not recommend the internal wifi on RasPi's as the quality of the drivers is suspect.
+Important: USB WiFi adapters contain only one internal radio. For a dual band setup, you need two usb wifi adapters or one usb wifi adapter and the RasPi internal wifi active. I do not recommend the internal wifi on RasPi's as the quality of the drivers is suspect. In fact, I alsways deactive the RasPi internal wifi.
 
 Note: Tri Band should work but I have not tested it.
 
@@ -60,21 +60,19 @@ Power Supply
 
 SD Card
 
+Note: My Pi4B is headless meaning no keyboard or mounse is in use. I use RasPiOS Connect to control the Pi4B.
+
 Note: I use the case upside down with little stick-on rubber feet. There are several little things that work better with the case upside down and no negatives that I can find.
 
-Note: Historically speaking, very few Powered USB 3 Hubs will work well with Raspberry Pi hardware. Raspberry Pi now offers a Raspberry Pi USB 3 Powered Hub for sale. I do not own one at this time so cannot say whether it is good or not. Here is a list of possible problems with Powered USB 3 Hubs:
-
-Backfeeding of current into the Raspberry Pi USB subsystem.
-
-Bugs in the USB3 hub chipset. (Raspberry Pi leadership has a history of making bad hardware decisions)
+Note: Historically speaking, very few Powered USB 3 Hubs will work well with Raspberry Pi hardware. Raspberry Pi now offers a Raspberry Pi USB 3 Powered Hub for sale. I do not own one at this time so cannot say whether it is good or not. 
 
 Another problem with the Raspberry Pi 4B USB subsystem is that it is designed to supply a maximum of 1200 mA of power. This is WELL BELOW the specification which calls for 2800 mA in a setup such as on the RasPi4B. It is very easy to exceed this 1200 mA limit.
 
-Note: The rtl88XXxu chipset based USB3 WiFi adapters require from 504 mA of power up to well over 800 mA of power depending on the adapter. Beware of the power hungry Realtek USB WiFi adapters.
+Note: The rtw88 chipset based USB3 WiFi adapters require from 504 mA of power up to well over 800 mA of power depending on the adapter. Beware of the power hungry Realtek USB WiFi adapters.
 
 Let me repeat: The Raspberry Pi 3B, 3B+ and 4B USB subsystems are only able to supply a total of 1200 mA of power total to be divided between all attached devices.
 
-Note: The Alfa AWUS036ACM adapter, a mt7612u based adapter, requests a maximum of 400 mA from the USB subsystem during initialization. Testing with a meter shows actual usage of 360 mA during heavy load and usage of 180 mA during light loads. This is much lower power usage than most AC1200 class adapters which makes this adapter a good choice for a Raspberry Pi based access points. Other mt7612u and mt7610u chipset based adapters also show low power usage. Even the newer WiFi 6 mt7921au chipset is a low power chipset so will work well with this setup. Another adapter that is very good for use in this setup is the Alfa AWUS036ACHM which is an AC600 class adapter that has very impressive range.
+Note: The Alfa AWUS036ACM adapter, a mt7612u based adapter, requests a maximum of 400 mA from the USB subsystem during initialization. Testing with a meter shows actual usage of 360 mA during heavy load and usage of 180 mA during light loads. This is much lower power usage than most AC1200 class adapters which makes this adapter a good choice for a Raspberry Pi based access points. Other mt7612u and mt7610u chipset based adapters also show low power usage. Even the newer WiFi 6 mt7921au and WiFi 7 mt7925u chipsets are low power chipsets so will work well with this setup. 
 
 #### Setup Steps
 
