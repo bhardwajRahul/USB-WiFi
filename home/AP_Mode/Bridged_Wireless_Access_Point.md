@@ -261,6 +261,8 @@ Ctrl + O, Enter, Ctrl + X
 
 Note: Netplan can also cause problems if you use Ubuntu server.  If you are using Ubuntu server, there is a section at the end of this guide that shows you how to remove Netplan. 
 
+-----
+
 #### Determine name and state of the network interfaces.
 
 ```
@@ -366,6 +368,8 @@ sudo nano /etc/systemd/network/30-config-bridge-br0.network
 ```
 
 Note: The contents of the Network block below should reflect the needs of your network.
+
+Comment from user:  The creation of the br0 interface effectively replaces eth0 with br0. However the br0 interface will NOT adopt the MAC address of the Ethernet HW (it will instead have its own randomly created MAC address); if you are connecting the AP to a router that assigns it a static IP address based on its MAC address, that will need updating.
 
 File contents
 
