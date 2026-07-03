@@ -1,4 +1,4 @@
-2025-10-12 (update is underway to check compatibility with kernel 6.18) 
+2026-07-04 (update is underway to check compatibility with kernel 6.18) 
 
 Maintained by @morrownr
 
@@ -258,6 +258,13 @@ wireless interface.
 Save the file.
 
 Ctrl + O, Enter, Ctrl + X
+
+To activate the new setting, restart NetworkManager:
+
+```
+sudo systemctl restart NetworkManager
+
+```
 
 Note: Netplan can also cause problems if you use Ubuntu server.  If you are using Ubuntu server, there is a section at the end of this guide that shows you how to remove Netplan. 
 
