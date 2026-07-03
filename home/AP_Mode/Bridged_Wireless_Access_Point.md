@@ -374,9 +374,9 @@ Ctrl + O, Enter, Ctrl + X
 sudo nano /etc/systemd/network/30-config-bridge-br0.network
 ```
 
-Note: The contents of the Network block below should reflect the needs of your network.
+Note: The contents of the Network block below should reflect the needs of your network. Most wireless routers come configured with a static ip address. I prefer that setup as I run the RasPi headless. However, if you prefer to use DHCP to assign an ip address address to your access point, uncomment `DHCP=yes" and comment the `Address=192.168.1.24/24` and `Gateway=192.168.1.1` lines.
 
-Comment from user:  The creation of the br0 interface effectively replaces eth0 with br0. However the br0 interface will NOT adopt the MAC address of the Ethernet HW (it will instead have its own randomly created MAC address); if you are connecting the AP to a router that assigns it a static IP address based on its MAC address, that will need updating.
+Note:  The creation of the br0 interface effectively replaces eth0 with br0. However the br0 interface will NOT adopt the MAC address of the Ethernet HW (it will instead have its own randomly created MAC address); if you are connecting the AP to a router that assigns it a static IP address based on its MAC address, that will need updating.
 
 File contents
 
@@ -388,7 +388,6 @@ Name=br0
 #DHCP=yes
 Address=192.168.1.24/24
 Gateway=192.168.1.1
-#DNS=8.8.8.8
 
 ```
 
