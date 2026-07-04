@@ -3,6 +3,7 @@
 The mission of this site is to provide reviews of USB WiFi adapters, links to specific adapters that are known to perform well with Linux ( see The Plug and Play List ), technical support and educational information.
 
 Site maintained by: @morrownr
+
 Site maintained by: @Lucid-Duck
 
 For companies, organizations or individuals seeking someone to do professional contract work:
