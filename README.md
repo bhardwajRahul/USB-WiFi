@@ -6,7 +6,7 @@ Site maintained by: @morrownr
 
 Site maintained by: @Lucid-Duck
 
-For companies, organizations or individuals seeking someone to do professional contract work:
+For companies, organizations or individuals seeking an engineer to do professional contract work:
 
 ```
 Contract work in Linux kernel driver development, reverse
