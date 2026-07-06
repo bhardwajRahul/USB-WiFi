@@ -2,7 +2,7 @@
 
 Maintained by: @morrownr
 
-Updated on: 2026-06-18
+Updated on: 2026-07-06
 
 Note: If you find that any of the answers below no longer work or are in need of an update, please let me know by posting a message in `issues`. Keeping the information on this site current is a challenge and can only work with your help. Thanks.
 
@@ -33,6 +33,20 @@ Note: If you find that any of the answers below no longer work or are in need of
 -----
 
 ## It appears that the Wireless Regulatory information is not correct in my system. How can I fix this?
+
+Medern wireless routers and APs advertise the country to clients using an IEEE 802.11d Country Information Element (IE) within its regular wireless Beacon and Probe Response frames. This allows the Linux kernel to automatically set the appropriate country information in your client system. If the country information is not being set correctly in your modern Linux system, it could be that your wireless router or AP is too old to have the capability to provide this information or it could be that the settings are not properly set in your wireless router or AP.
+
+If you are using `hostapd` to build your own access point, you need a specific setting to enable the capability:
+
+You should set the regulatory domain in your hostapd.conf file using two lines:
+
+```
+country_code=US (Sets the regulatory domain, e.g., 'US' for the United States)
+ieee80211d=1 (Enables 802.11d so the AP actively broadcasts the country code to clients)
+
+```
+
+If it appears that the wireless router or AP is not the problem, further troubleshooting is in order:
 
 Know the Country Code for your Country: [List of Current ISO 3166 country codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) ( Example: Panama = PA )
 
