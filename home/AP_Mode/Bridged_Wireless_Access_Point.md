@@ -665,6 +665,8 @@ Add the Environment=DAEMON_OPTS= line as shown below (remember to change <your_h
 Environment=DAEMON_OPTS="-d -K -f /home/<your_home>/hostapd.log"
 ```
 
+Note: The above line establishes the location of the hostapd log file. It needs to be located on writable mediq.
+
 Change RestartSec= line as shown below
 
 ```
